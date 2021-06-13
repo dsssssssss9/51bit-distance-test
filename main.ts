@@ -24,16 +24,14 @@ input.onButtonPressed(Button.B, function () {
 function BullBed () {
     colorbit_51bit.clear()
     for (let Count12 = 0; Count12 <= 2; Count12++) {
-        colorbit_51bit.drawColorBit(1, Count12 + 1, colorbit.colors(BitColors.Yellow))
-        colorbit_51bit.drawColorBit(Count12 + 1, 1, colorbit.colors(BitColors.Yellow))
-        colorbit_51bit.drawColorBit(Count12 + 1, 3, colorbit.colors(BitColors.Yellow))
-        colorbit_51bit.drawColorBit(3, Count12 + 1, colorbit.colors(BitColors.Yellow))
+        colorbit_51bit.drawColorBit(1, Count12 + 1, colorbit.colors(BitColors.Orange))
+        colorbit_51bit.drawColorBit(Count12 + 1, 1, colorbit.colors(BitColors.Orange))
+        colorbit_51bit.drawColorBit(Count12 + 1, 3, colorbit.colors(BitColors.Orange))
+        colorbit_51bit.drawColorBit(3, Count12 + 1, colorbit.colors(BitColors.Orange))
     }
 }
 let colorbit_51bit: colorbit.Strip = null
 colorbit_51bit = colorbit.initColorBit(DigitalPin.P1, BitColorMode.RGB)
+colorbit_51bit.setBrightness(64)
 colorbit_51bit.clear()
 colorbit_51bit.showColorIcon(ColorIcon.ChristmasTree, colorbit.colors(BitColors.Red))
-basic.forever(function () {
-	
-})
