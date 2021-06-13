@@ -57,5 +57,29 @@ basic.forever(function () {
         colorbit_51bit.showColorIcon(ColorIcon.No, colorbit.colors(BitColors.Red))
         basic.pause(100)
         colorbit_51bit.clear()
+    } else if (sonar.ping(
+    DigitalPin.P2,
+    DigitalPin.P16,
+    PingUnit.Centimeters
+    ) > Min_Distance && sonar.ping(
+    DigitalPin.P2,
+    DigitalPin.P16,
+    PingUnit.Centimeters
+    ) < Max_Distance) {
+        if (sonar.ping(
+        DigitalPin.P2,
+        DigitalPin.P16,
+        PingUnit.Centimeters
+        ) <= (Max_Distance - Min_Distance) / 3) {
+            BullsEye()
+        }
+    } else if (sonar.ping(
+    DigitalPin.P2,
+    DigitalPin.P16,
+    PingUnit.Centimeters
+    ) <= (Max_Distance - Min_Distance) / (2 + 3)) {
+        BullBed()
+    } else {
+        Outer()
     }
 })
