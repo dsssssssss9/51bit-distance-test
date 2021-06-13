@@ -43,8 +43,12 @@ basic.forever(function () {
         basic.pause(100)
         colorbit_51bit.clear()
     } else if (Reading > Min_Distance && Reading < Max_Distance) {
-        if (Reading <= Min_Distance + 5) {
+        if (Reading <= Min_Distance + 3) {
             BullsEye()
+        } else if (Reading >= Max_Distance + -3) {
+            Outer()
+        } else {
+            BullBed()
         }
     }
 })
