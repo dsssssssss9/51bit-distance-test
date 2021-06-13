@@ -37,3 +37,25 @@ colorbit_51bit.clear()
 colorbit_51bit.showColorIcon(ColorIcon.Yes, colorbit.colors(BitColors.White))
 let Min_Distance = 5
 let Max_Distance = 50
+basic.forever(function () {
+    basic.showNumber(sonar.ping(
+    DigitalPin.P2,
+    DigitalPin.P16,
+    PingUnit.Centimeters
+    ))
+    if (sonar.ping(
+    DigitalPin.P2,
+    DigitalPin.P16,
+    PingUnit.Centimeters
+    ) > Max_Distance) {
+        colorbit_51bit.showColorIcon(ColorIcon.Yes, colorbit.colors(BitColors.White))
+    } else if (sonar.ping(
+    DigitalPin.P2,
+    DigitalPin.P16,
+    PingUnit.Centimeters
+    ) < Min_Distance) {
+        colorbit_51bit.showColorIcon(ColorIcon.No, colorbit.colors(BitColors.Red))
+        basic.pause(100)
+        colorbit_51bit.clear()
+    }
+})
