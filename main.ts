@@ -24,7 +24,7 @@ function BullBed () {
 let Reading = 0
 let colorbit_51bit: colorbit.Strip = null
 colorbit_51bit = colorbit.initColorBit(DigitalPin.P1, BitColorMode.RGB)
-colorbit_51bit.setBrightness(32)
+colorbit_51bit.setBrightness(16)
 colorbit_51bit.clear()
 colorbit_51bit.showColorIcon(ColorIcon.Yes, colorbit.colors(BitColors.White))
 let Min_Distance = 2.5
