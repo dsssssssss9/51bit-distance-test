@@ -7,20 +7,11 @@ function Outer () {
         colorbit_51bit.drawColorBit(4, Count1, colorbit.colors(BitColors.Red))
     }
 }
-input.onButtonPressed(Button.A, function () {
-    Outer()
-})
 function BullsEye () {
     colorbit_51bit.clear()
     colorbit_51bit.drawColorBit(2, 2, colorbit.colors(BitColors.Green))
     basic.pause(100)
 }
-input.onButtonPressed(Button.AB, function () {
-    BullsEye()
-})
-input.onButtonPressed(Button.B, function () {
-    BullBed()
-})
 function BullBed () {
     colorbit_51bit.clear()
     for (let Count12 = 0; Count12 <= 2; Count12++) {
@@ -30,6 +21,7 @@ function BullBed () {
         colorbit_51bit.drawColorBit(3, Count12 + 1, colorbit.colors(BitColors.Orange))
     }
 }
+let Reading = 0
 let colorbit_51bit: colorbit.Strip = null
 colorbit_51bit = colorbit.initColorBit(DigitalPin.P1, BitColorMode.RGB)
 colorbit_51bit.setBrightness(32)
@@ -38,48 +30,21 @@ colorbit_51bit.showColorIcon(ColorIcon.Yes, colorbit.colors(BitColors.White))
 let Min_Distance = 5
 let Max_Distance = 50
 basic.forever(function () {
-    basic.showNumber(sonar.ping(
+    Reading = sonar.ping(
     DigitalPin.P2,
     DigitalPin.P16,
     PingUnit.Centimeters
-    ))
-    if (sonar.ping(
-    DigitalPin.P2,
-    DigitalPin.P16,
-    PingUnit.Centimeters
-    ) > Max_Distance) {
+    )
+    basic.showNumber(Reading)
+    if (Reading > Max_Distance) {
         colorbit_51bit.showColorIcon(ColorIcon.Yes, colorbit.colors(BitColors.White))
-    } else if (sonar.ping(
-    DigitalPin.P2,
-    DigitalPin.P16,
-    PingUnit.Centimeters
-    ) < Min_Distance) {
+    } else if (Reading < Min_Distance) {
         colorbit_51bit.showColorIcon(ColorIcon.No, colorbit.colors(BitColors.Red))
         basic.pause(100)
         colorbit_51bit.clear()
-    } else if (sonar.ping(
-    DigitalPin.P2,
-    DigitalPin.P16,
-    PingUnit.Centimeters
-    ) > Min_Distance && sonar.ping(
-    DigitalPin.P2,
-    DigitalPin.P16,
-    PingUnit.Centimeters
-    ) < Max_Distance) {
-        if (sonar.ping(
-        DigitalPin.P2,
-        DigitalPin.P16,
-        PingUnit.Centimeters
-        ) <= (Max_Distance - Min_Distance) / 3) {
+    } else if (Reading > Min_Distance && Reading < Max_Distance) {
+        if (Reading <= Min_Distance + 5) {
             BullsEye()
         }
-    } else if (sonar.ping(
-    DigitalPin.P2,
-    DigitalPin.P16,
-    PingUnit.Centimeters
-    ) <= (Max_Distance - Min_Distance) / (2 + 3)) {
-        BullBed()
-    } else {
-        Outer()
     }
 })
