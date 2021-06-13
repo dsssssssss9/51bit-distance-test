@@ -1,5 +1,5 @@
 {
-    "name": "51bit sro4 sonar display",
+    "name": "51bit ColorBit sro4 sonar display",
     "description": "",
     "dependencies": {
         "core": "*",
