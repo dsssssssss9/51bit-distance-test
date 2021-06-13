@@ -1,11 +1,12 @@
 {
-    "name": "51bit distance test",
+    "name": "51bit sro4 sonar display",
     "description": "",
     "dependencies": {
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "colorbit": "github:51bit/colorbit#v0.1.2"
+        "colorbit": "github:51bit/colorbit#v0.1.2",
+        "pxt-sonar": "github:microsoft/pxt-sonar#v0.0.5"
     },
     "files": [
         "main.blocks",
